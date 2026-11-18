@@ -1,0 +1,68 @@
+<!-- templates/dashboard.html -->
+<!-- Dashboard view displaying habits and progress. -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-title">
+    <h2>Dashboard</h2>
+    <a class="button" href="{{ url_for('new_habit') }}">Create a new habit</a>
+</section>
+
+{% if habits %}
+<table class="habit-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Current Streak</th>
+            <th>Completed Today</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for habit in habits %}
+        <tr>
+            <td>{{ habit.name }}</td>
+            <td>{{ habit.description }}</td>
+            <td>{{ habit.current_streak }}</td>
+            <td>{{ 'Yes' if habit.completed_today else 'No' }}</td>
+            <td class="actions-cell">
+                <form action="{{ url_for('complete_habit', habit_id=habit.id) }}" method="post" class="inline-form">
+                    <button type="submit">Mark Done</button>
+                </form>
+                <a class="button secondary" href="{{ url_for('edit_habit', habit_id=habit.id) }}">Edit</a>
+                <form action="{{ url_for('delete_habit', habit_id=habit.id) }}" method="post" class="inline-form">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No habits defined yet. Add one to get started.</p>
+{% endif %}
+
+<section class="analytics-section">
+    <h3>Weekly Completion Totals</h3>
+    <div class="chart">
+        {% set chart_values = analytics['values'] if analytics and analytics['values'] else [] %}
+        {% set chart_labels = analytics['labels'] if analytics and analytics['labels'] else [] %}
+        {% set max_value = chart_values|max if chart_values else 0 %}
+        {% for idx in range(chart_labels|length) %}
+            {% set label = chart_labels[idx] %}
+            {% set value = chart_values[idx] %}
+            {% if max_value > 0 %}
+                {% set width = ((value / max_value) * 100)|round(0) %}
+            {% else %}
+                {% set width = 0 %}
+            {% endif %}
+            <div class="chart-row">
+                <span class="chart-label">{{ label }}</span>
+                <span class="chart-bar" style="width: {{ width }}%">{{ value }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

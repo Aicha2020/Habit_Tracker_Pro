@@ -1,0 +1,24 @@
+<!-- templates/edit_habit.html -->
+<!-- Form for editing an existing habit. -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="form-page">
+    <h2>Edit Habit</h2>
+    <form action="{{ url_for('update_habit', habit_id=habit.id) }}" method="post" class="habit-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" value="{{ habit.name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description">{{ habit.description }}</textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Update Habit</button>
+            <a class="button secondary" href="{{ url_for('dashboard') }}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+<!-- templates/create_habit.html -->
+<!-- Form for creating a new habit. -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="form-page">
+    <h2>Create Habit</h2>
+    <form action="{{ url_for('create_habit') }}" method="post" class="habit-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Save Habit</button>
+            <a class="button secondary" href="{{ url_for('dashboard') }}">Cancel</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

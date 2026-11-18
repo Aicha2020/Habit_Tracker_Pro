@@ -1,0 +1,244 @@
+/* static/css/styles.css */
+/* Global styles for Habit Tracker Pro. */
+
+:root {
+    color-scheme: light;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #212121;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
+header {
+    background: #2f4f4f;
+    color: #fff;
+    padding: 1rem 1.5rem;
+}
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+main {
+    padding: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.flash-messages {
+    margin-bottom: 1rem;
+}
+
+.flash {
+    padding: 0.9rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+}
+
+.flash.success {
+    background: #e6ffed;
+    color: #1b5e20;
+    border: 1px solid #a5d6a7;
+}
+
+.flash.error {
+    background: #ffebee;
+    color: #b71c1c;
+    border: 1px solid #ef9a9a;
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.page-title h2 {
+    margin: 0;
+}
+
+button,
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    border: none;
+    background: #2f4f4f;
+    color: #fff;
+    padding: 0.65rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.button.secondary,
+button.secondary {
+    background: #607d8b;
+}
+
+button:hover,
+.button:hover {
+    opacity: 0.95;
+}
+
+.habit-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background: #fff;
+    border: 1px solid #dfe3ea;
+}
+
+.habit-table th,
+.habit-table td {
+    padding: 0.9rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.habit-table th {
+    background: #f1f5f9;
+    font-weight: 600;
+}
+
+.habit-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.actions-cell {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.inline-form {
+    display: inline-block;
+    margin: 0;
+}
+
+a.button {
+    white-space: nowrap;
+}
+
+.analytics-section {
+    background: #fff;
+    border: 1px solid #dfe3ea;
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.analytics-section h3 {
+    margin-top: 0;
+}
+
+.chart {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.chart-label {
+    font-size: 0.94rem;
+    color: #555;
+}
+
+.chart-bar {
+    display: inline-block;
+    min-height: 2rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 999px;
+    background: #2f4f4f;
+    color: #fff;
+    max-width: 100%;
+}
+
+.form-page,
+form.habit-form {
+    background: #fff;
+    border: 1px solid #dfe3ea;
+    border-radius: 8px;
+    padding: 1.25rem;
+}
+
+.form-group {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font: inherit;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .site-header,
+    .page-title,
+    .actions-cell {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .habit-table th,
+    .habit-table td {
+        padding: 0.75rem;
+    }
+
+    .chart-row {
+        grid-template-columns: 1fr;
+    }
+}
