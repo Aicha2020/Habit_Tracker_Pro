@@ -12,7 +12,7 @@ Habit Tracker Pro is a simple local Flask web application for tracking daily hab
 - Store data locally in `data/habits.json`
 - Show success and error feedback using flash messages
 
-## Non-Trivial Logic Feature: Current Streak Engine
+## Logic Feature: Current Streak Engine
 
 The main non-trivial logic feature is the current streak engine. It calculates each habit's current streak by evaluating completion dates and counting backwards from today or yesterday.
 
@@ -33,19 +33,29 @@ The streak engine handles:
 - HTML/CSS/JavaScript
 - pytest
 
+## AI-Assisted Development
+
+Habit Tracker Pro was developed with assistance from Google Gemini and GitHub Copilot. Gemini supported planning, requirements analysis, and system design, while GitHub Copilot assisted with implementation, debugging, and testing. AI-generated outputs were manually reviewed and validated against the project requirements, with final decisions remaining the responsibility of the developer.
+
 ## Project Structure
 
 ```text
 habit-tracker-pro/
 ├── app.py
+├── README.md
 ├── requirements.txt
 ├── data/
 │   └── habits.json
 ├── services/
+│   ├── habit_service.py
+│   ├── streak_engine.py
+│   └── analytics_service.py
 ├── storage/
+│   └── json_storage.py
 ├── templates/
 ├── static/
 └── tests/
+```
 
 ## Installation
 
@@ -63,7 +73,7 @@ python -m venv venv
 
 On Windows:
 
-```bash
+```powershell
 venv\Scripts\activate
 ```
 
@@ -89,36 +99,4 @@ python app.py
 
 Then open the following address in your browser:
 
-```text
-http://127.0.0.1:5000
-```
-
-The application will run locally on your machine.
-
-## Run Tests
-
-From the project root folder, run:
-
-```bash
-python -m pytest
-```
-
-The test suite includes unit tests for the streak engine, date handling, JSON storage, and analytics service, as well as integration tests for the Flask routes.
-
-## Data Storage
-
-Habit data is stored locally in:
-
-```text
-data/habits.json
-```
-
-If the file does not exist, the application creates an empty data file automatically.
-
-## Notes
-
-- No external APIs are used.
-- No cloud storage is used.
-- No user accounts or login are required.
-- Static assets are served locally.
-- No external CDNs or front-end JavaScript libraries are required.
+`http://127.0.0.1
